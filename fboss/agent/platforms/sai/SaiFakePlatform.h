@@ -39,7 +39,7 @@ class SaiFakePlatform : public SaiPlatform {
   }
 
   bool isSerdesApiSupported() const override {
-    return true;
+    return false;
   }
 
   bool supportInterfaceType() const override {

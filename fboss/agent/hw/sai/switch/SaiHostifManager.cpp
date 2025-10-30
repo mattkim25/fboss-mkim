@@ -571,7 +571,8 @@ void SaiHostifManager::changeCpuVoq(
       getLocalPortNumVoqs(cfg::PortType::CPU_PORT, cfg::Scope::LOCAL);
   for (const auto& newPortVoq : std::as_const(*newVoqConfig)) {
     // Voq create or update
-    if (newPortVoq->getID() > maxCpuVoqs) {
+    // only allow 0-7 bc we only have 8 voqs. ">" would allow for voqs 0-8.
+    if (newPortVoq->getID() >= maxCpuVoqs) {
       throw FbossError(
           "Voq ID : ",
           newPortVoq->getID(),
